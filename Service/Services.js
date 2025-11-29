@@ -1,4 +1,4 @@
-import { DataHewan } from "../data";
+import { DataHewan } from "../data.js";
 
 //Create
 function addDataHewan (NamaPemilik, NomorTelefon, NamaHewan, JenisHewan, JenisKelamin, Tanggal, Berat, Keluhan) {
@@ -18,7 +18,7 @@ const TambahData = {
 }
 
 //Read keseluruhan
-function LihatDataKeseluruhan(filters) {
+function getAllDataHewan(filters) {
   if (!filters || Object.keys(filters).length === 0) {
     return DataHewan;
   }
@@ -62,7 +62,6 @@ function updateDataHewan(id, updatePayload) {
     throw new Error("Data hewan tidak ditemukan");
   }
 
-  // Update hanya field yang dikirim
   for (const [key, value] of Object.entries(updatePayload)) {
     if (value !== undefined) {
       DataHewan[index][key] = value;
@@ -73,10 +72,10 @@ function updateDataHewan(id, updatePayload) {
 }
 
 //melihat Banyak data hewan
-function BanyakDataHewan() {
+function countDataHewan() {
   return DataHewan.length;
 }
 
-
+export {addDataHewan, deleteDataHewan, countDataHewan, getAllDataHewan, getDataHewanById, updateDataHewan};
 
 
